@@ -1,9 +1,9 @@
-import { findAllPublicPosts } from "@/libs/post/queries";
+import { findAllPublicPostsCached } from "@/libs/post/queries/public";
 import { PostCoverImage } from "../PostCoverImage";
 import { PostSummary } from "../PostSummary";
 
 export async function PostFeatured() {
-  const posts = await findAllPublicPosts();
+  const posts = await findAllPublicPostsCached();
   const post = posts[0];
   return (
     <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">

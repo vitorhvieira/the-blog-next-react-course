@@ -1,8 +1,10 @@
 import { SinglePost } from "@/components/SinglePost";
 import { SpinLoader } from "@/components/SpinLoader";
-import { findPostBySlug } from "@/libs/post/queries";
+import { findPublicPostBySlugCached } from "@/libs/post/queries/public";
 import { Metadata } from "next";
 import { Suspense } from "react";
+
+export const dynamic = "force-static";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -11,7 +13,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
 
-  const post = await findPostBySlug(slug);
+  const post = await findPublicPostBySlugCached(slug);
 
   return {
     title: post.title,

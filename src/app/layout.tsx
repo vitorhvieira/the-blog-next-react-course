@@ -20,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className="min-h-screen flex flex-col">
-        <Header />
-        <Container>{children}</Container>
-        <Footer />
+        <Container>
+          <Header />
+          {children}
+          <Footer />
+        </Container>
       </body>
     </html>
   );
