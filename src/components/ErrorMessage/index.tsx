@@ -3,7 +3,7 @@
 import clsx from "clsx";
 
 type Props = {
-  pageTitle: string;
+  pageTitle?: string;
   contentTitle: string;
   content: React.ReactNode;
 };
@@ -11,11 +11,11 @@ type Props = {
 export default function ErrorMessage({
   content,
   contentTitle,
-  pageTitle,
+  pageTitle = "",
 }: Props) {
   return (
     <>
-      <title>{pageTitle}</title>
+      {pageTitle && <title>{pageTitle}</title>}
       <div
         className={clsx(
           "min-h-[320px]",
